@@ -48,6 +48,7 @@
     font-family:monospace;
 }
 
+/* container that holds the nav links */
 .nav-menu {
     display: grid;
     grid-template-columns: repeat(4, auto);
@@ -59,9 +60,12 @@
     margin-right: 2rem;
 }
 
+/* container for each nav-link */
 .nav-item {
     height: 80px;
 }
+
+/* nav-links */
 .nav-links {
     color: var(--accent-color);
     display: flex;
@@ -76,8 +80,68 @@
     box-shadow: inset 0 -3px 0 -1px var(--main-color);
     transition: box-shadow 90ms ease-in-out, color 80ms ease-in;
 }
+
 .nav-links:hover{
     box-shadow: inset 0 -80px 0 -1px var(--main-color);
     color: var(--page-color)
+}
+
+/* hamburger menu icon */
+.menu-icon {
+    display: none;
+    color: var(--accent-color);
+}
+
+@media screen and (max-width: 960px){
+    .navbar{
+        position: relative;
+    }
+
+    .menu-icon {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(-100%, 60%);
+        font-size: 1.8rem;
+        cursor: pointer;
+    }
+
+    /* container for nav links, switching from grid to flex to arrange in column format*/
+    .nav-menu {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 90vh;
+        position: absolute;
+        top: 80px;
+        left: -100%;
+        opacity: 1;
+        transition: left 250ms ease, background-color 250ms ease;
+    }
+
+    /* when the hamburger is active */
+    .nav-menu.active {
+        background-color: var(--main-color);
+        left:0;
+        opacity: 1;
+        z-index: 1;
+        transition: left 250ms ease, background-color 250ms ease;
+    }
+
+
+    .nav-links {
+        text-align: center;
+        padding: 2rem;
+        width: 100%;
+        display: table;
+
+        background: linear-gradient(to left, var(--main-color) 50%, var(--page-color) 50%) right;
+        background-size: 100%;
+        transition:  250ms;
+    }
+    
+    
+    
 }
 
