@@ -19,26 +19,27 @@ function Navbar() {
 
   return (
     <>
-        <nav className='navbar'>
-            <div className='nav-container'>
+        <header className='navbar-container flex'>
 
-                 {/* Here we want to put our logo button that routes back to the homepage */}
-                <Link to='/' className='logo-btn'>
+            {/* Here we want to put our logo button that routes back to the homepage */}
+            <Link to='/' className='logo-container'>
 
-                    <BsFillCloudHaze2Fill className='logo-icon'/>
-                    crub-hub 
+                <BsFillCloudHaze2Fill className='logo-icon'/>
+                crub-hub 
 
-                </Link>
+            </Link>
 
-                {/* Hamburger Menu Icon */}
-                <div className='menu-icon' onClick={handleClick}>
+            {/* Hamburger Menu Icon */}
+            <div className='menu-icon' onClick={handleClick}>
 
-                    {!isClicked ? <GiHamburgerMenu /> : <HiX />}
+                {!isClicked ? <GiHamburgerMenu className='accent-color sr-only'/> : <HiX className='page-color'/>}
 
-                </div>
+            </div>
+
+            <nav>
                 {/* unordered list of all the nav links */}
                 <ul 
-                    className={ isClicked? 'nav-menu active' : 'nav-menu' }
+                    className={ isClicked? 'nav-list flex active' : 'nav-list flex' }
                 >
 
                     <NavLink path='/' label='Editor' onClick={closeMobileMenu}/>
@@ -47,8 +48,8 @@ function Navbar() {
                     <NavLink path='/' label='About' onClick={closeMobileMenu}/>
 
                 </ul>
-            </div>
-        </nav>
+            </nav>
+        </header>
     </>
   )
 }
