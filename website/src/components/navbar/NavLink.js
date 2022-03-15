@@ -3,11 +3,13 @@ import {Link} from 'react-router-dom'
 import './Navbar.css'
 
 function NavLink(props) {
+    
   return (
-    <li className='nav-item'>
+    <li className='nav-item' >
         <Link 
             to={props.path} 
-            className='nav-links' 
+            className='nav-links'
+            onClick={props.onClick} 
         >
             {props.label}
         </Link>

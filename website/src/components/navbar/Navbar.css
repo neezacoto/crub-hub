@@ -4,8 +4,12 @@
     --main-color: rgb(235, 163, 30);
     --accent-color: rgb(56, 56, 56);
     --page-color: white;
-    --mobile-menu-transition-speed: 250ms;
+    --mobile-menu-transition-speed: 200ms;
     --menu-transition-speed: 200ms;
+}
+
+body {
+    overflow-x: hidden;
 }
 
 .page-color {
@@ -34,9 +38,31 @@
     gap: var(--gap, 1rem);
 }
 
+.settings {
+    display: flex;
+    font-size: 1.7rem;
+    padding: 0 1rem 0 0;
+    margin: 0;
+    
+}
+
+.settings svg {
+    cursor: pointer;
+    transition: transform 350ms;
+}
+
+.settings svg:hover{
+    transform: rotate(90deg);
+    
+}
+
+.right-nav-side {
+    align-items: center;
+    justify-content: center;
+}
 
 .logo-container {
-    margin: 2rem;
+    margin: 1.1rem;
     text-decoration: none;
     color: var(--accent-color);
     font-size: 2.4rem;
@@ -58,9 +84,7 @@
     list-style: none;
     padding: 0;
     margin: 0;
-    padding: 2rem 5rem 2rem 2rem;
-    gap: 2em;
-    transition: transform 0ms;
+    gap: 0;
     
 }
 
@@ -68,32 +92,58 @@
     
     text-decoration: none;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 2rem;
+    font-size: 1.4rem;
     color: var(--accent-color);
+    
+
+    box-shadow: inset 0 -3px 0 -1px var(--main-color);
+    transition: box-shadow 150ms ease-in-out, color 80ms;
+    padding: 100% 2rem 2rem 2rem;
     
 
 }
 
-@media (min-width: 45em) and (max-width: 58em) {
-    .nav-list {
-        padding: 2rem 2rem 2rem 2rem;
-        gap: 1em;
-        
-    }
+.nav-links:hover {
+    box-shadow: inset 0 -100px 0 -1px var(--main-color);
+    color: var(--page-color);
+}
+
+
+@media (min-width: 45em) and (max-width: 70em) {
+
     .nav-links {
-        font-size: 1.6rem;
+        font-size: 1.3rem;
+        padding: 100% 1rem 2rem 1rem;
     }
 }
 
 /* mobile view*/
 @media (max-width: 45em) {
 
-    .nav-links {
+    /* what I could end up doing is having two separte gears that open a settings menu, and then the settings
+    menu has it's own x button */
+
+    .settings {
+        font-size: 2rem;
         color: var(--page-color);
+        
+    
+        z-index: 9998;
+        
     }
 
+    .settings[data-visible="true"]{
+        
+    }
+    .nav-links {
+        color: var(--page-color);
+        padding: 0;
+        
+        
+    }
+    
     .nav-list {
-
+        
         gap: 2em;
         font-size: 1.8rem;
         font-weight: bold;
@@ -108,13 +158,12 @@
         background: var(--main-color);
         transform: translateX(100%);
         
-        transition: transform var(--mobile-menu-transition-speed);
-        
+        transition: transform var(--mobile-menu-transition-speed) ease-out;
+
     }
 
-    .nav-list.flex.active {
+    .nav-list[data-visible="true"] {
         transform: translateX(0);
-        transition: transform var(--mobile-menu-transition-speed);
     }
 
     
