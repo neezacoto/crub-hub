@@ -12,14 +12,18 @@ import './Navbar.css'
 function Navbar() {
 
     const [isClicked, setisClicked] = useState(false); //is the hamburger clicked?
-    const [isMenuExpanded, setIsMenuExpanded] = useState(false);
-    
+
     const handleClick = () => {
         setisClicked(!isClicked);
-        setIsMenuExpanded(!isMenuExpanded)
-
     };
     const closeMobileMenu = () => setisClicked(false);
+
+    const [isSettingVisible, setIsSettingVisible] = useState(false);
+
+    const settingsToggle = () => {
+        setIsSettingVisible(!isSettingVisible);
+    }
+
 
   return (
     <>
@@ -30,14 +34,13 @@ function Navbar() {
 
                 <BsFillCloudHaze2Fill className='logo-icon'/>
                 crub-hub 
-
+                <div className='logo-divider' />
             </Link>
 
             {/* Hamburger Menu Icon */}
             <div 
                 className='menu-icon' 
                 onClick={handleClick} 
-                aria-expanded={isMenuExpanded}
             >
 
                 {!isClicked ? <GiHamburgerMenu className='accent-color sr-only'/> : <HiX className='page-color'/>}
@@ -52,7 +55,8 @@ function Navbar() {
                         className='nav-list flex'
                         data-visible={isClicked}
                     >
-
+                        
+                        <div className='mobile-settings' data-visible={isClicked} onClick={settingsToggle}><BsFillGearFill /></div>
                         <NavLink path='/' label='Editor' onClick={closeMobileMenu}/>
                         <NavLink path='/' label='Web Portfolio' onClick={closeMobileMenu}/>
                         <NavLink path='/' label='Art' onClick={closeMobileMenu}/>
@@ -60,14 +64,31 @@ function Navbar() {
 
                     </ul>
                 </nav>
-                <div className='settings' data-visible={isClicked}>
+                <div className='settings' data-visible={isClicked} onClick={settingsToggle}>
 
                     <BsFillGearFill />
 
                 </div>
             </div>
+
+            
             
         </header>
+        <div className='full-settings' data-visible={isSettingVisible} >
+                <HiX className='settings-x page-color' onClick={settingsToggle}/>
+                <h1>Settings</h1>
+                <nav >
+                    <ul>
+                        <li>
+                            Hello
+                        </li>
+                        <li>
+                            hi
+                        </li>
+                
+                    </ul> 
+                </nav> 
+            </div>
     </>
   )
 }
