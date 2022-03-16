@@ -194,6 +194,8 @@ body {
         font-size: 1.3rem;
         padding: 100% 1rem 2rem 1rem;
     }
+
+  
 }
 
 /* mobile view*/
@@ -234,14 +236,14 @@ body {
         padding: min(20vh, 10rem) 2em;
 
         background: ${ ({ theme}) => theme.colors.primary};
-        transform: translateX(100%);
+        transform: translateX(0);
 
         transition: transform 250ms ease-out;
 
     }
 
-    .nav-list[data-visible="true"] {
-        transform: translateX(0);
+    .nav-list[data-visible="false"] {
+        transform: translateX(100%);
     }
 
 
