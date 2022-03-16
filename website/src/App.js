@@ -21,8 +21,13 @@ function App() {
     <GlobalStyles theme={(isDarkTheme)? darkTheme : lightTheme}/>
       <Router>
         <Navbar toggle = {toggle}/>
+        
         <Routes>
-          <Route path="/" element={<div>hello world</div>} />
+          <Route path="/" element={<div>main page</div>} />
+          <Route path="/editor" element={<div>editor page</div>} />
+          <Route path="/web-portfolio" element={<div>web portfolio page</div>} />
+          <Route path="/art" element={<div>art page</div>} />
+          <Route path="/about" element={<div>about</div>} />          
         </Routes>
       </Router>
     

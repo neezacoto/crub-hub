@@ -118,10 +118,11 @@ body {
     display: flex;
     flex-direction: column;
     position: absolute;
-    align-items: center;
+    align-items: flex-start;
     justify-content: flex-start;
     top:0;
     padding-top: 2rem;
+    padding-left: 3rem;
 
     background: ${ ({ theme }) => theme.colors.settingsColor};
     height: 100vh;
@@ -129,18 +130,37 @@ body {
     transform: translateX(100%);
     transition: transform 250ms;
 
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
 }
 
 .full-settings[data-visible="true"] {
     transform: translateX(0);
 }
 
-.full-settings h1{
+.full-settings label {
+    display: flex;
+    gap: .5em;
+    align-items: center;
+}
 
-    text-decoration: underline;
-    font-size: 3rem;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+.full-settings h1 {
 
+    border-bottom: 2px solid ${ ({ theme }) => theme.colors.settingsText};
+    font-size: 4.5em;
+    color: ${ ({ theme }) => theme.colors.settingsText};
+    
+
+}
+
+.full-settings h2 {
+    font-size: 3em;
+    color: ${ ({ theme }) => theme.colors.settingsText};
+}
+
+.full-settings label {
+    padding-top: 10px;
+    font-size: 1.5em;
 }
 
 .settings-x {

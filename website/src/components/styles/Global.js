@@ -5,6 +5,10 @@ const GlobalStyles = createGlobalStyle`
     body {
         overflow-x: hidden;
         background: ${({theme}) => theme.colors.pageColor}
+        
+    }
+    body > div {
+        color: ${({theme}) => theme.colors.accent}
     }
 
 `

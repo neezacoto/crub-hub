@@ -6,6 +6,7 @@ import {Link} from 'react-router-dom';
 import NavLink from './NavLink';
 import { StyledNavContainer } from '../styles/Navbar.styled';
 import ThemeProvider from 'styled-components'
+import Switch from '../switch/Switch';
 
 
 function Navbar(props) {
@@ -58,10 +59,10 @@ function Navbar(props) {
                         >
                             
                             <div className='mobile-settings' data-visible={isClicked} onClick={settingsToggle}><BsFillGearFill /></div>
-                            <NavLink path='/' label='Editor' onClick={closeMobileMenu}/>
-                            <NavLink path='/' label='Web Portfolio' onClick={closeMobileMenu}/>
-                            <NavLink path='/' label='Art' onClick={closeMobileMenu}/>
-                            <NavLink path='/' label='About' onClick={closeMobileMenu}/>
+                            <NavLink path='/editor' label='Editor' onClick={closeMobileMenu}/>
+                            <NavLink path='/web-portfolio' label='Web Portfolio' onClick={closeMobileMenu}/>
+                            <NavLink path='/art' label='Art' onClick={closeMobileMenu}/>
+                            <NavLink path='/about' label='About' onClick={closeMobileMenu}/>
 
                         </ul>
                     </nav>
@@ -77,14 +78,19 @@ function Navbar(props) {
             </header>
             <div className='full-settings' data-visible={isSettingVisible} >
                     <HiX className='settings-x page-color' onClick={settingsToggle}/>
-                    <h1>Settings</h1>
+                    <h1>Settings  .</h1>
                     <nav >
                         <ul>
                             <li>
-                                <button onClick={props.toggle}> Toggle Theme </button>
+                                <h2>Appearance</h2>
+                                <label>
+                                    <span>Dark Mode </span>
+                                    <Switch onClick={props.toggle}/>
+                                </label>
+                                
                             </li>
                             <li>
-                                hi
+                                
                             </li>
                     
                         </ul> 
