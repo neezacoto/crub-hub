@@ -169,11 +169,12 @@ body {
     position: absolute;
     z-index: 9999;
     right: 2rem;
-    font-size: 2.3rem;
+    font-size: 3rem;
     transition: transform 200ms ease-out;
 }
 
 .menu-x {
+    font-size: 3rem;
     transition: transform 200ms ease-out;
 }
 
