@@ -1,34 +1,31 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500&family=Righteous&display=swap');
+import styled from 'styled-components'
 
-:root {
-    --main-color: rgb(235, 163, 30);
-    --accent-color: rgb(56, 56, 56);
-    --page-color: white;
-    --mobile-menu-transition-speed: 200ms;
-    --menu-transition-speed: 200ms;
-}
+export const StyledNavContainer = styled.div`
+
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500&family=Righteous&display=swap');
 
 body {
     overflow-x: hidden;
+    color: ${ ({ theme }) => theme.colors.pageColor};
 }
 
 .page-color {
-    color: var(--page-color)
+    color: ${ ({ theme }) => theme.colors.pageColor};
 }
 
 .accent-color {
-    color: var(--accent-color);
+    color: ${ ({ theme }) => theme.colors.accent};
 }
 
 .main-color {
-    color: var(--main-color);
+    color: ${ ({ theme}) => theme.colors.primary};
 }
 
 .navbar-container {
     font-family: 'Fredoka', sans-serif;
-    border-bottom: .4em solid var(--main-color);
-    box-shadow: 0 -5px 20px 1px var(--accent-color);
-    
+    border-bottom: .4em solid ${ ({ theme}) => theme.colors.primary};
+    box-shadow: 0 -5px 20px 1px rgb(56, 56, 56);
+
 }
 
 .menu-icon {
@@ -41,8 +38,9 @@ body {
 }
 
 .settings {
+    color: ${ ({ theme}) => theme.colors.accent};
     display: flex;
-    font-size: 1.7rem;
+    font-size: 1.9rem;
     padding: 0 1rem 0 0;
     margin: 0;
     padding: auto 2rem 2rem 2rem;
@@ -55,7 +53,7 @@ body {
 
 .settings svg:hover,.mobile-settings svg:hover{
     transform: rotate(90deg);
-    
+
 }
 
 .right-nav-side {
@@ -66,16 +64,16 @@ body {
 .logo-container {
     margin: 1.1rem;
     text-decoration: none;
-    color: var(--accent-color);
+    color: ${ ({ theme }) => theme.colors.accent};
     font-size: 2.4rem;
     display: flex;
     align-items: center;
     gap: 5px;
-    
+
 }
 
 .logo-icon {
-    color: var(--main-color)
+    color: ${ ({ theme}) => theme.colors.primary}
 }
 
 .navbar-container {
@@ -88,27 +86,26 @@ body {
     padding: 0;
     margin: 0;
     gap: 0;
-    
+
 }
 
 .nav-links {
-    
+
     text-decoration: none;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 1.4rem;
-    color: var(--accent-color);
-    
+    color: ${ ({ theme }) => theme.colors.accent};
 
-    box-shadow: inset 0 -3px 0 -1px var(--main-color);
+
+    box-shadow: inset 0 -3px 0 -1px ${ ({ theme}) => theme.colors.primary};
     transition: box-shadow 150ms ease-in-out, color 80ms;
     padding: 100% 2rem 2rem 2rem;
-    
 
 }
 
 .nav-links:hover {
-    box-shadow: inset 0 -100px 0 -1px var(--main-color);
-    color: var(--page-color);
+    box-shadow: inset 0 -100px 0 -1px ${ ({ theme}) => theme.colors.primary};
+    color: ${ ({ theme }) => theme.colors.pageColor};
 }
 
 .mobile-settings {
@@ -117,19 +114,21 @@ body {
 
 .full-settings {
     z-index: 9998;
-    color: var(--page-color);
+    color: white;
     display: flex;
     flex-direction: column;
     position: absolute;
     align-items: center;
-    justify-content: center;
-    background: var(--accent-color);
+    justify-content: flex-start;
+    top:0;
+    padding-top: 2rem;
+
+    background: ${ ({ theme }) => theme.colors.settingsColor};
     height: 100vh;
     width: 100vw;
     transform: translateX(100%);
     transition: transform 250ms;
-    top:0;
-    
+
 }
 
 .full-settings[data-visible="true"] {
@@ -137,13 +136,15 @@ body {
 }
 
 .full-settings h1{
-    
+
     text-decoration: underline;
-    margin-top: 1.7em;
+    font-size: 3rem;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
 }
 
 .settings-x {
+    color: white;
    cursor: pointer;
     position: absolute;
     z-index: 9999;
@@ -151,7 +152,12 @@ body {
     font-size: 2.3rem;
     transition: transform 200ms ease-out;
 }
-.settings-x:hover {
+
+.menu-x {
+    transition: transform 200ms ease-out;
+}
+
+.settings-x:hover, .menu-x:hover {
     transform: rotate(90deg);
 }
 
@@ -180,21 +186,21 @@ body {
     }
 
     .mobile-settings {
-        color: var(--page-color);
+        color: ${ ({ theme }) => theme.colors.pageColor};
         font-size: 2rem;
         display: block;
         transition: transform 300ms ease-out;
     }
 
     .nav-links {
-        color: var(--page-color);
+        color: ${ ({ theme }) => theme.colors.pageColor};
         padding: 0;
-        
-        
+
+
     }
-    
+
     .nav-list {
-        
+
         gap: 2em;
         font-size: 1.8rem;
         font-weight: bold;
@@ -206,10 +212,10 @@ body {
         flex-direction: column;
         padding: min(20vh, 10rem) 2em;
 
-        background: var(--main-color);
+        background: ${ ({ theme}) => theme.colors.primary};
         transform: translateX(100%);
-        
-        transition: transform var(--mobile-menu-transition-speed) ease-out;
+
+        transition: transform 250ms ease-out;
 
     }
 
@@ -217,22 +223,22 @@ body {
         transform: translateX(0);
     }
 
-    
+
     .menu-icon {
         cursor: pointer;
         display: block;
-        color: var(--page-color);
+        color: ${ ({ theme }) => theme.colors.primary};
         position: absolute;
         z-index: 9998;
         font-size: 2.5rem;
-        top: 2rem;
+        top: 1.5rem;
         right: 2rem;
 
     }
 
     .menu-icon.active {
         display: block;
-        color: var(--page-color);
+        color: ${ ({ theme }) => theme.colors.pageColor};
         position: absolute;
         z-index: 9997;
         font-size: 2.5rem;
@@ -241,6 +247,8 @@ body {
 
     }
 
-    
-    
+
+
 }
+
+`
